@@ -17,7 +17,7 @@
             </div>
             <div class="modal-body">
                 <div class="jumbotron">
-
+                 
                 </div>
             </div>
 

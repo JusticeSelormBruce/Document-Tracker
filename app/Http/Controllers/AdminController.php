@@ -12,11 +12,9 @@ use App\User;
 use App\UserRoles;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
-use Illuminate\Validation\Rules\In;
-use function MongoDB\BSON\toJSON;
+
 
 class AdminController extends Controller
 {
@@ -33,8 +31,8 @@ class AdminController extends Controller
         } else {
             $links = null;
         }
+      
         Session::put('routes', $links);
-
         $incomingCount = Incoming::orderByDesc('id')->where('user_id', Auth::user()->id)->count();
         $countDispatch = Dispatch::orderByDesc('id')->where('user_id', Auth::user()->id)->count();
         return view('dashboard', compact('incomingCount', 'countDispatch'));
@@ -93,11 +91,12 @@ class AdminController extends Controller
             $userRoles = null;
 
         } else {
+        
             $data = $this->getSelectedRolesLogic();
             $userRoles = $data[0];
 
         }
- 
+
         $me = Session::get('id');
         return view('admin.privilege.form', compact('privileges', 'users', 'data', 'me', 'userRoles'));
     }
@@ -128,7 +127,6 @@ class AdminController extends Controller
             $result = UserRoles::create(['user_id' => $user_id, 'role_id' => $value]);
             $this->setUserRole($user_id, $result->id);
         } else {
-
             UserRoles::whereId($user_role_exist->id)->update(['role_id' => $request->role_id]);
         }
 

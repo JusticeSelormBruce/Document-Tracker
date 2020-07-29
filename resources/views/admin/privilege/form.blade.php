@@ -42,6 +42,7 @@
                             </select>
                         @else
                             <select name="user_id" required class="form-control" onchange="this.form.submit()">
+                                <option value="">Select User to Assign Roles To</option>
                                 @foreach($users as $user)
                                     <option value="{{$user->id}}"
                                             @if($me == $user->id) selected @endif> {{$user->name}} <span
