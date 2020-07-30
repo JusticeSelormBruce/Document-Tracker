@@ -37,16 +37,33 @@
                             </div>
                         </div>
                         <div class="form-group row">
+                            <label for="email" class="col-md-4 col-form-label text-md-right">Department</label>
+
+                            <div class="col-md-8 ">
+                                <select  class="form-control py-1 @error('dept_id') is-invalid @enderror" name="dept_id" value="" required>
+                                    <option value="">Select Department</option>
+                                    @foreach($departments as $list)
+                                        <option value="{{$list->id}}">{{$list->long_name}}</option>
+                                        @endforeach
+                                </select>
+                                @error('dept_id')
+                                <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">Office</label>
 
                             <div class="col-md-8 ">
-                                <select  class="form-control py-1 @error('department_id') is-invalid @enderror" name="department_id" value="{{ old('email') }}">
+                                <select  class="form-control py-1 @error('office_id') is-invalid @enderror" name="office_id" value="">
                                     <option value="">Select Office</option>
                                     @foreach($offices as $list)
                                         <option value="{{$list->id}}">{{$list->name}}</option>
                                         @endforeach
                                 </select>
-                                @error('department_id')
+                                @error('office_id')
                                 <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>

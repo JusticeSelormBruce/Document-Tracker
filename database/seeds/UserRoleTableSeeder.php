@@ -15,7 +15,7 @@ class UserRoleTableSeeder extends Seeder
     {
         UserRoles::create([
             "user_id"=>1,
-            "role_id"=>"1"
+            "role_id"=>"[1,2,3,4,5,6,7,8,9]"
         ]);
         User::whereId(1)->update(['user_role_id'=>1]);
     }

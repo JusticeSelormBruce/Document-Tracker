@@ -42,11 +42,29 @@
                         </div>
                     </div>
                     <div class="row py-1 no-gutters">
+                        <div class="col-2">Attachemnt</div>
+                        <div class="col-8">  <select name="attachment" class="form-control" >
+                            <option value="">Select Attachment Status</option>
+                            <option value="No">No</option>
+                            <option value="Yes">Yes</option>
+                        </select></div>
+                       
+                    </div>
+                    <div class="row py-1 no-gutters">
+                        <div class="col-2">No of Attachments</div>
+                        <div class="col-8 input-group-sm">
+                            <input name="no_attachment"   class="form-control" type="number">
+                        </div>
+                    </div>
+                    <div class="row py-1 no-gutters">
                         <div class="col-2">Remark</div>
                         <div class="col-8 input-group-sm">
                             <select name="remarks" class="form-control" required>
                                 <option value="">Select Remarks</option>
-                                <option value="signed">Signed</option>
+                                <option value="Direct">Direct</option>
+                                <option value="Copied">Copied</option>
+                                <option value="Refered">Refered</option>
+                                <option value="Distribution">Distribution</option>
                             </select>
                         </div>
                     </div>

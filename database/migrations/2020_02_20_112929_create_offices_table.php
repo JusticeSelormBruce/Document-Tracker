@@ -18,7 +18,7 @@ class CreateOfficesTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->unsignedBigInteger('departments_id');
-            $table->foreign('departments_id')->references('id')->on('departments');
+            $table->foreign('departments_id')->references('id')->on('departments')->onDelete('cascade');
             $table->timestamps();
         });
     }

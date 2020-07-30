@@ -31,7 +31,7 @@ class AdminController extends Controller
         } else {
             $links = null;
         }
-      
+
         Session::put('routes', $links);
         $incomingCount = Incoming::orderByDesc('id')->where('user_id', Auth::user()->id)->count();
         $countDispatch = Dispatch::orderByDesc('id')->where('user_id', Auth::user()->id)->count();
@@ -83,18 +83,16 @@ class AdminController extends Controller
 
     public function AssignPrivilegeForm()
     {
-           
+
         $privileges = Routes::all();
         $users = User::get()->all();
         if (Session::get('user_id') == null) {
             $data = null;
             $userRoles = null;
-
         } else {
-        
+
             $data = $this->getSelectedRolesLogic();
             $userRoles = $data[0];
-
         }
 
         $me = Session::get('id');
@@ -131,7 +129,6 @@ class AdminController extends Controller
         }
 
         return back()->with('msg', 'Privileges granted  to user successfully');
-
     }
 
     public function UserAccountsIndex()
@@ -147,7 +144,9 @@ class AdminController extends Controller
         User::create([
             'name' => $request->name,
             'email' => $request->email,
-            'password' => Hash::make($request->password)
+            'password' => Hash::make($request->password),
+            'dept_id'=>$request->dept_id,
+            'office_id'=>$request->office_id,
         ]);
         return back()->with('msg', 'User Account Created successfully');
     }
@@ -170,6 +169,11 @@ class AdminController extends Controller
         return back()->with('msg', 'Office Added Successfully');
     }
 
+    public function EditOffice(Request $request)
+    {
+        Offices::whereId($request->id)->update($request->except('id', '_method', '_token'));
+        return back()->with('msg', 'Office Updated Successfully');
+    }
     public function IncomingIndex()
     {
         $offices = Offices::all();
@@ -217,7 +221,6 @@ class AdminController extends Controller
         $file_incoming = Incoming::where('reg_no', $arg)->get()->all();
         $file_dispatch = Dispatch::where('reg_no', $arg)->get()->all();
         return view('tracking.results', compact('file_dispatch', 'file_incoming', 'arg', 'offices'));
-
     }
 
     public function resetPasswordIndex(Request $request)
@@ -250,20 +253,17 @@ class AdminController extends Controller
 
     public function checkMemoAvailability(Request $request)
     {
+
         $arg = $request->reg_no;
         $file_incoming = Incoming::where('reg_no', $arg)->get()->all();
-        $file_dispatch = Dispatch::where('reg_no', $arg)->get()->all();
-        if (($file_incoming && $file_dispatch) == null) {
+        if (($file_incoming) == null) {
             return redirect('/dispatch-form');
         } else {
-            if ($file_incoming !== null) {
-                $data = Incoming::where('reg_no', $arg)->get()->first();
-            } else {
-                $data = Dispatch::where('reg_no', $arg)->get()->first();
-            }
+            $data = Incoming::where('reg_no', $arg)->get()->first();
         }
         $getOfficeMembers = User::where('office_id', Auth::user()->office_id)->get()->all();
-        $offices = Offices::all();
+        
+        $offices = Offices::where('id','!=', Auth::user()->office_id)->get()->all();
         return view('dispatch.dispatch_form', compact('data', 'getOfficeMembers', 'offices'));
     }
 
@@ -271,6 +271,6 @@ class AdminController extends Controller
     {
         $getOfficeMembers = User::where('office_id', Auth::user()->office_id)->get()->all();
         $offices = Offices::all();
-        return view('dispatch.form',compact('getOfficeMembers','offices'));
+        return view('dispatch.form', compact('getOfficeMembers', 'offices'));
     }
 }

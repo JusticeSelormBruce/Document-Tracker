@@ -22,10 +22,12 @@ class CreateDispatchesTable extends Migration
             $table->integer('no_of_letter');
             $table->text('subject');
             $table->string('remarks');
+            $table->string('attachment');
+            $table->string('no_attachment');
             $table->unsignedBigInteger('office_id');
             $table->unsignedBigInteger('user_id');
-            $table->foreign('office_id')->references('id')->on('offices');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('office_id')->references('id')->on('offices')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }

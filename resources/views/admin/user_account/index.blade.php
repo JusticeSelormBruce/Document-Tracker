@@ -30,7 +30,7 @@
 
 
 
-                <table id="table_id">
+                <table id="table_id" class="table-striped">
                     <thead>
                     <tr>
                         <th>#</th>

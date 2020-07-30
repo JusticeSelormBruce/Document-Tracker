@@ -13,7 +13,7 @@
                         </div>
                     </div>
                     <div class="row py-1 no-gutters">
-                        <div class="col-4">To Whom Receive</div>
+                        <div class="col-4">Dispatch By</div>
                         <div class="col-8 input-group-sm">
                             <select name="to_whom_receive" required class="form-control">
                                 @foreach($getOfficeMembers as $member)
@@ -53,7 +53,7 @@
                         </div>
                     </div>
                     <div class="row py-1 no-gutters ">
-                        <div class="col-4">Office</div>
+                        <div class="col-4">Dispatch To:</div>
                         <div class="col-8 input-group-sm">
                             <select name="office_id" class="form-control" required>
                                 @foreach($offices as $office)

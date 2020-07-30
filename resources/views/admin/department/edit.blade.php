@@ -1,9 +1,9 @@
 
 
 <!-- Button trigger modal -->
-<button type="button" class="btn text-primary  btn-sm w-50" data-toggle="modal" data-target="#exampleModalLong{{$dept->id}}">
-    Edit
-</button>
+<a type="button" class=" text-primary  btn-sm py-0" data-toggle="modal" data-target="#exampleModalLong{{$dept->id}}">
+   <span> Edit</span>
+</a>
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModalLong{{$dept->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle{{$dept->id}}" aria-hidden="true">

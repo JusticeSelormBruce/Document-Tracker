@@ -12,10 +12,10 @@ class RouteTableSeeder extends Seeder
      */
     public function run()
     {
-        Routes::create([
-            'name' => 'Roles',
-            'route' => '/admin/role-index'
-        ]);
+        // Routes::create([
+        //     'name' => 'Roles',
+        //     'route' => '/admin/role-index'
+        // ]);
         Routes::create([
             'name' => 'Departments',
             'route' => '/admin/department-index'

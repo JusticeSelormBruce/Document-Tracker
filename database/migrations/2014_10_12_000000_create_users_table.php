@@ -23,9 +23,9 @@ class CreateUsersTable extends Migration
             $table->unsignedBigInteger('dept_id')->nullable();
             $table->unsignedBigInteger('office_id')->nullable();
             $table->unsignedBigInteger('user_role_id')->nullable();
-            $table->foreign('dept_id')->references('id')->on('departments');
-            $table->foreign('office_id')->references('id')->on('offices');
-            $table->foreign('user_role_id')->references('id')->on('user_roles');
+            $table->foreign('dept_id')->references('id')->on('departments')->onDelete('cascade');
+            $table->foreign('office_id')->references('id')->on('offices')->onDelete('cascade');
+            $table->foreign('user_role_id')->references('id')->on('user_roles')->onDelete('cascade');
             $table->rememberToken();
             $table->timestamps();
         });

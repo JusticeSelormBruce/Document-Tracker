@@ -1,7 +1,7 @@
 <!-- Button trigger modal -->
-<button type="button" class="btn text-primary  btn-sm " data-toggle="modal" data-target="#exampleModalLong{{$list->id}}">
+<a type="button" class=" text-primary  " data-toggle="modal" data-target="#exampleModalLong{{$list->id}}">
     <span class="small text-capitalize">Subject</span>
-</button>
+</a>
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModalLong{{$list->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle{{$list->id}}"

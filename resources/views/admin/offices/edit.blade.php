@@ -1,9 +1,9 @@
 
 
 <!-- Button trigger modal -->
-<button type="button" class="btn text-primary  btn-sm w-50" data-toggle="modal" data-target="#exampleModalLong{{$office->id}}">
+<a type="button" class=" text-primary  btn-sm " data-toggle="modal" data-target="#exampleModalLong{{$office->id}}">
     Edit
-</button>
+</a>
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModalLong{{$office->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle{{$office->id}}" aria-hidden="true">
@@ -17,7 +17,7 @@
             </div>
             <div class="modal-body">
                    <div class="jumbotron">
-                       <form action="/admin/edit-department" method="post">
+                       <form action="/admin/edit-offices" method="post">
                            @method('PATCH')
                            <input type="hidden" name="id" value="{{$office->id}}">
                            <div class="row">
@@ -26,9 +26,8 @@
                                        <div class="col-2"><label for="">Dept Name:</label></div>
                                        <div class="col-10 input-group-sm">
                                            <select name="departments_id" id="" required class="form-control">
-                                               <option value="">Select Department</option>
                                                @foreach($departments as $dept)
-                                                   <option value="{{$dept->id}}" @if($dept->id == $office->department_id) selected @endif>{{$dept->long_name}}</option>
+                                                   <option value="{{$dept->id}}" @if($dept->id == $office->departments_id) selected @endif>{{$dept->long_name}}</option>
                                                @endforeach
                                            </select>
                                        </div>
@@ -36,7 +35,7 @@
                                    <div class="row no-gutters pt-2">
                                        <div class="col-2"><label for="">Short Name:</label></div>
                                        <div class="col-10 input-group-sm">
-                                           <input type="text" name="short_name" required class="form-control" value="{{$office->name}}">
+                                           <input type="text" name="name" required class="form-control" value="{{$office->name}}">
                                        </div>
                                    </div>
                                    <div class="row pt-4">

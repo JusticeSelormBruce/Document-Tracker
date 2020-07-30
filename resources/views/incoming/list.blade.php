@@ -1,4 +1,4 @@
-<table id="table_id" style="font-size: small!important; ">
+<table id="table_id" style="font-size: small!important; " class="table-striped">
     <thead>
     <tr>
         <th>Reg No.</th>

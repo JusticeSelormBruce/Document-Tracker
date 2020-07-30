@@ -41,6 +41,8 @@ Route::post('admin/register-user', 'AdminController@RegisterUser');
 
 Route::get('admin/offices-index', 'AdminController@OfficesIndex');
 Route::post('/admin/add-office', 'AdminController@AddOffice');
+Route::patch('/admin/edit-offices', 'AdminController@EditOffice');
+
 //Admin Route End
 
 //Incoming  Route Start
